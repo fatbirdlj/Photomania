@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[PhotosByPhotographerMapViewController setPhotographer:]:PhotosByPhotographerMapViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.photosByPhotographer">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__41-[PhotomaniaAppDelegate startFlickrFetch]_block_invoke:PhotomaniaAppDelegate.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[FlickrFetcher URLForRecentGeoreferencedPhotos]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[PhotosByPhotographerMapViewController mapView:viewForAnnotation:]:PhotosByPhotographerMapViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "((Photo *)annotaion).title">
+            </PersistentString>
+            <PersistentString
+               value = "annotation.title">
+            </PersistentString>
+            <PersistentString
+               value = "[annotation title]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[PhotomaniaAppDelegate flickrPhotosAtURL:]:PhotomaniaAppDelegate.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[propertyList valueForKey:FLICKR_PHOTO_PATH]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[PhotosByPhotographerMapViewController prepareForSegue:sender:]:PhotosByPhotographerMapViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "ivc.imageURL">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[AddPhotoViewController prepareForSegue:sender:]:AddPhotoViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "photo.title">
+            </PersistentString>
+            <PersistentString
+               value = "self.addedPhoto">
+            </PersistentString>
+            <PersistentString
+               value = "[self.imageURL absoluteString]">
+            </PersistentString>
+            <PersistentString
+               value = "photo.imageURL">
+            </PersistentString>
+            <PersistentString
+               value = "self.titleForPhoto.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "+[AddPhotoViewController canAddPhoto]:AddPhotoViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[CLLocationManager authorizationStatus]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[PhotosByPhotographerMapViewController unwindForSegue:towardsViewController:]:PhotosByPhotographerMapViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "addedPhoto.title">
+            </PersistentString>
+            <PersistentString
+               value = "addedPhoto">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__33-[PhotographerCDTVC awakeFromNib]_block_invoke:PhotographerCDTVC.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.managedObjectContext">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[AddPhotoViewController cancel:]:AddPhotoViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.presentedViewController">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[AddPhotoViewController shouldPerformSegueWithIdentifier:sender:]:AddPhotoViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[CLLocationManager authorizationStatus]">
+            </PersistentString>
+            <PersistentString
+               value = "self.locationErrorCode">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[PhotomaniaAppDelegate URLSession:downloadTask:didFinishDownloadingToURL:]:PhotomaniaAppDelegate.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[PhotosByPhotographerMapViewController updateMapViewAnnotations]:PhotosByPhotographerMapViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.photosByPhotographer">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "+[Photographer(Create) photographerWithName:inManagedObjectContext:]:Photographer+Create.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[match count]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

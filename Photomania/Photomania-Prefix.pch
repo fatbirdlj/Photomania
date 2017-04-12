@@ -1,0 +1,21 @@
+//
+//  Photomania-Prefix.pch
+//  Photomania
+//
+//  Created by 刘江 on 2017/4/10.
+//  Copyright © 2017年 Flicker. All rights reserved.
+//
+
+#import <Availability>
+
+#ifndef __IPHONE_5_0
+#waring "This project uses features only available in iOS SDK 5.0 and later."
+#define Photomania_Prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#ifndef __OBJC
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#endif /* Photomania_Prefix_pch */
