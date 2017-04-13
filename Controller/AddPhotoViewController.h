@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "Photographer+CoreDataClass.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface AddPhotoViewController : UIViewController
 
 @property (nonatomic,strong) Photographer *photographer;
 
 @property (nonatomic,readonly) Photo *addedPhoto;
+
+@property (strong,nonatomic) CLLocation *userlocation;
 
 @end

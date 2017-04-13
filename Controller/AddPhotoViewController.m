@@ -14,11 +14,8 @@
 
 
 
-@interface AddPhotoViewController ()<UITextFieldDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,CLLocationManagerDelegate>
+@interface AddPhotoViewController ()<UITextFieldDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 @property (nonatomic,strong) UIImage *image;
-@property (strong,nonatomic) CLLocationManager *locationManager;
-@property (strong,nonatomic) CLLocation *location;
-@property (nonatomic,assign) NSInteger locationErrorCode;
 @property (weak, nonatomic) IBOutlet UITextField *titleForPhoto;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UITextField *subtitleForPhoto;
@@ -44,15 +41,6 @@
     [[NSFileManager defaultManager] removeItemAtURL:_thumbnailURL error:NULL];
     self.imageURL = nil;
     self.thumbnailURL = nil;
-}
-
-- (CLLocationManager *)locationManager{
-    if (!_locationManager) {
-        _locationManager = [[CLLocationManager alloc] init];
-        _locationManager.delegate = self;
-        _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    }
-    return _locationManager;
 }
 
 - (NSURL *)imageURL{
@@ -86,7 +74,7 @@
 - (NSURL *)uniqueDocumentURL{
     NSArray *documentDirectories = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
     NSString *unique = [NSString stringWithFormat:@"%.0f", floor([NSDate timeIntervalSinceReferenceDate])];
-    return [[documentDirectories firstObject] URLByAppendingPathComponent:unique];
+    return [[documentDirectories lastObject] URLByAppendingPathComponent:unique];
 }
 
 #pragma mark - Capabilities
@@ -187,16 +175,6 @@
     return YES;
 }
 
-#pragma mark - CLLocationManagerDelegate
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
-    self.location = [locations lastObject];
-}
-
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
-    self.locationErrorCode = error.code;
-}
-
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -207,8 +185,8 @@
             photo.title = self.titleForPhoto.text;
             photo.subtitle = self.subtitleForPhoto.text;
             photo.whoTook = self.photographer;
-            photo.latitude = self.location.coordinate.latitude;
-            photo.longitude = self.location.coordinate.longitude;
+            photo.latitude = self.userlocation.coordinate.latitude;
+            photo.longitude = self.userlocation.coordinate.longitude;
             photo.imageURL = [self.imageURL absoluteString];
             photo.thumbnailURL = [self.thumbnailURL absoluteString];
             
@@ -231,21 +209,8 @@
         } else if(![self.titleForPhoto.text length]){
             [self alert:@"Title required!"];
             return NO;
-        } else if(!self.location){
-            switch (self.locationErrorCode) {
-                case kCLErrorLocationUnknown:
-                    [self alert:@"Couldn't figure out where this photo was taken (yet)."];
-                    break;
-                case kCLErrorDenied:
-                    [self alert:@"Location Services disabled under Privacy in the settings application."];
-                    break;
-                case kCLErrorNetwork:
-                    [self alert:@"Can't figure out where this photo is being taken. Verify your connection to the network."];
-                    break;
-                default:
-                    [self alert:@"Can't figure out where this photo is being taken. sorry"];
-                    break;
-            }
+        } else if(!self.userlocation){
+            [self alert:@"Couldn't figure out where this photo was taken (yet)."];
             return NO;
         } else {
             return YES;
@@ -261,17 +226,11 @@
     [super viewDidAppear:animated];
     if (![[self class] canAddPhoto]) {
         [self fatalAlert:@"Sorry, this device can't add a photo."];
-    } else {
-        if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-            [self.locationManager requestWhenInUseAuthorization];
-        }
-       [self.locationManager startUpdatingLocation];
     }
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [self.locationManager stopUpdatingLocation];
 }
 
 

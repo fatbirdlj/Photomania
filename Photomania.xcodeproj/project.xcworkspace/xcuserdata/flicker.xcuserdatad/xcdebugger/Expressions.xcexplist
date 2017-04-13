@@ -41,6 +41,9 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[PhotomaniaAppDelegate URLSession:downloadTask:didFinishDownloadingToURL:]:PhotomaniaAppDelegate.m">
+      </ContextState>
+      <ContextState
          contextName = "-[PhotosByPhotographerMapViewController prepareForSegue:sender:]:PhotosByPhotographerMapViewController.m">
          <PersistentStrings>
             <PersistentString
@@ -69,21 +72,13 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "+[AddPhotoViewController canAddPhoto]:AddPhotoViewController.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "[CLLocationManager authorizationStatus]">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "-[PhotosByPhotographerMapViewController unwindForSegue:towardsViewController:]:PhotosByPhotographerMapViewController.m">
          <PersistentStrings>
             <PersistentString
-               value = "addedPhoto.title">
+               value = "addedPhoto">
             </PersistentString>
             <PersistentString
-               value = "addedPhoto">
+               value = "addedPhoto.title">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -115,13 +110,34 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[PhotomaniaAppDelegate URLSession:downloadTask:didFinishDownloadingToURL:]:PhotomaniaAppDelegate.m">
+         contextName = "+[AddPhotoViewController canAddPhoto]:AddPhotoViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[CLLocationManager authorizationStatus]">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "-[PhotosByPhotographerMapViewController updateMapViewAnnotations]:PhotosByPhotographerMapViewController.m">
          <PersistentStrings>
             <PersistentString
                value = "self.photosByPhotographer">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[AddPhotoViewController locationManager:didUpdateLocations:]:AddPhotoViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "newLocation.horizontalAccuracy">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__73-[PhotosByPhotographerMapViewController mapView:didSelectAnnotationView:]_block_invoke:PhotosByPhotographerMapViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "photo.thumbnailURL">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

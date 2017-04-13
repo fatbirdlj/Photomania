@@ -14,17 +14,49 @@
 #import "ImageViewController.h"
 #import "Photo+Annotation.h"
 
-@interface PhotosByPhotographerMapViewController ()<MKMapViewDelegate>
+@interface PhotosByPhotographerMapViewController ()<MKMapViewDelegate,CLLocationManagerDelegate>
 
 @property (strong,nonatomic) NSArray *photosByPhotographer;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addPhotoBarButton;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong,nonatomic) CLLocationManager *locationManager;
+@property (strong,nonatomic) CLLocation *userLocation;
 
 @end
 
 @implementation PhotosByPhotographerMapViewController
 
+#pragma mark - Lifecycle
+
+- (void)viewDidLoad{
+    [super viewDidLoad];
+    [self.locationManager requestWhenInUseAuthorization];
+}
+
+#pragma mark - Self Location
+
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation{
+    // only set user location and make it center of map when take my photos
+    if (self.photographer.isUser) {
+        self.userLocation = userLocation.location;
+        [self.mapView setCenterCoordinate:userLocation.coordinate];
+    }
+}
+
+- (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView{
+    self.mapView.showsUserLocation = YES;
+}
+
 #pragma mark - Properties
+
+- (CLLocationManager *)locationManager{
+    if (!_locationManager) {
+        _locationManager = [[CLLocationManager alloc] init];
+        _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        _locationManager.delegate = self;
+    }
+    return _locationManager;
+}
 
 - (NSArray *)photosByPhotographer{
     if (!_photosByPhotographer) {
@@ -77,6 +109,9 @@
 #pragma mark - MKMapViewDelegate
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
+    if ([annotation isKindOfClass:[MKUserLocation class]]) {
+        return nil;
+    }
     static NSString *reuseid = @"PhotosByPhotographerMapViewController";
     MKAnnotationView *view = [mapView dequeueReusableAnnotationViewWithIdentifier:reuseid];
     if (!view) {
@@ -127,6 +162,7 @@
     if ([segue.destinationViewController isKindOfClass:[AddPhotoViewController class]]) {
         AddPhotoViewController *pvc = (AddPhotoViewController *)(segue.destinationViewController);
         pvc.photographer = self.photographer;
+        pvc.userlocation = self.userLocation;
     } else if([sender isKindOfClass:[MKAnnotationView class]]) {
         ImageViewController *ivc = (ImageViewController *)(segue.destinationViewController);
         MKAnnotationView *annotationView = (MKAnnotationView *)sender;
