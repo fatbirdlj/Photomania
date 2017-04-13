@@ -31,6 +31,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     [self.locationManager requestWhenInUseAuthorization];
+    self.mapView.showsUserLocation = YES;
 }
 
 #pragma mark - Self Location
@@ -39,12 +40,8 @@
     // only set user location and make it center of map when take my photos
     if (self.photographer.isUser) {
         self.userLocation = userLocation.location;
-        [self.mapView setCenterCoordinate:userLocation.coordinate];
+        [self.mapView setCenterCoordinate:userLocation.coordinate animated:YES];
     }
-}
-
-- (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView{
-    self.mapView.showsUserLocation = YES;
 }
 
 #pragma mark - Properties
